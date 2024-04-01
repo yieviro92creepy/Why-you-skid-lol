@@ -1,0 +1,16 @@
+function a(room)
+    if room:WaitForChild("ScaryLava",3) then
+        task.wait(1.5)        
+        for i,v in pairs(room.ScaryLava["Lava Strips"]:GetChildren()) do
+            v.CanTouch = false
+        end
+    end
+end
+
+for i,v in pairs(workspace.CurrentRooms:GetChildren()) do
+    task.spawn(a, v)
+end
+
+workspace.CurrentRooms.ChildAdded:Connect(function(v)
+    task.spawn(a, v)
+end
